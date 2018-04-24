@@ -1,0 +1,36 @@
+﻿<Window x:Class="DemoSocket.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:local="clr-namespace:DemoSocket"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:ChatViewModel x:Key="chatViewModel"/>
+    </Window.Resources>
+    <Grid>
+        <ListView x:Name="lvMessage" ItemsSource="{Binding ListChat, Source={StaticResource chatViewModel}}" SelectedItem="{Binding SelectedItem, Source={StaticResource chatViewModel}}" HorizontalAlignment="Left" Height="192" Margin="10,36,0,0" VerticalAlignment="Top" Width="352">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Content" DisplayMemberBinding="{Binding Content}"/>
+                </GridView>
+            </ListView.View>
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction 
+                        Command="{Binding ItemSelectedCommand, Source={StaticResource chatViewModel}}" 
+                        CommandParameter="{Binding SelectedItem, ElementName=lvMessage}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ListView>
+        <Label x:Name="lblSelected" Width="100" Content="{Binding CurrentSelected, Source={StaticResource chatViewModel}}" Margin="379,191,39.4,92.8"/>
+        <TextBox x:Name="txtInput" HorizontalAlignment="Left" Height="25" Margin="9,286,0,0" TextWrapping="Wrap" Text="Insert message . . ." VerticalAlignment="Top" Width="289"/>
+        <Button x:Name="btnSend" Content="Send" HorizontalAlignment="Left" Height="25" Margin="309,286,0,0" VerticalAlignment="Top" Width="53" Command="{Binding SendCommand, Source={StaticResource chatViewModel}}" CommandParameter="{Binding ElementName=This}"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="24" Margin="10,7,0,0" TextWrapping="Wrap" Text="Anonymous" VerticalAlignment="Top" Width="352"/>
+
+    </Grid>
+</Window>
