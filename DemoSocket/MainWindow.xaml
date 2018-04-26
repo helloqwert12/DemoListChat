@@ -14,8 +14,8 @@
         <ListView x:Name="lvMessage" ItemsSource="{Binding ListChat, Source={StaticResource chatViewModel}}" SelectedItem="{Binding SelectedItem, Source={StaticResource chatViewModel}}" HorizontalAlignment="Left" Height="192" Margin="10,36,0,0" VerticalAlignment="Top" Width="352">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Content" DisplayMemberBinding="{Binding Content}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Content}"/>
                 </GridView>
             </ListView.View>
 
@@ -28,7 +28,7 @@
             </i:Interaction.Triggers>
         </ListView>
         <Label x:Name="lblSelected" Width="100" Content="{Binding CurrentSelected, Source={StaticResource chatViewModel}}" Margin="379,191,39.4,92.8"/>
-        <TextBox x:Name="txtInput" HorizontalAlignment="Left" Height="25" Margin="9,286,0,0" TextWrapping="Wrap" Text="Insert message . . ." VerticalAlignment="Top" Width="289"/>
+        <TextBox x:Name="txtInput" HorizontalAlignment="Left" Height="25" Margin="9,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="289" Text="{Binding TextInput, Source={StaticResource chatViewModel}}"/>
         <Button x:Name="btnSend" Content="Send" HorizontalAlignment="Left" Height="25" Margin="309,286,0,0" VerticalAlignment="Top" Width="53" Command="{Binding SendCommand, Source={StaticResource chatViewModel}}" CommandParameter="{Binding ElementName=This}"/>
         <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="24" Margin="10,7,0,0" TextWrapping="Wrap" Text="Anonymous" VerticalAlignment="Top" Width="352"/>
 

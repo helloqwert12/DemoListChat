@@ -89,6 +89,7 @@
     <Compile Include="ChatModel.cs" />
     <Compile Include="ChatViewModel.cs" />
     <Compile Include="IHavePassword.cs" />
+    <Compile Include="ListChatModel.cs" />
     <Compile Include="SocketAPI.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
