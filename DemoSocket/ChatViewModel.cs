@@ -18,6 +18,7 @@ namespace DemoSocket
         private string selectedString;
         private ListChatModel listChatModel;
         public DelegateCommand<ChatModel> ItemSelectedCommand { get; set; } //Command use for SelectedChanged event of listview (or listbox, ...)
+        public DelegateCommand ChangeWindowCommand { get; set; }
         
         public ObservableCollection<ChatModel> ListChat
         {
@@ -76,12 +77,18 @@ namespace DemoSocket
             NotifyPropertyChanged("TextInput");
         }
         
+        public void ChangeWindow()
+        {
+            Window2 window = new Window2();
+            window.Show();
+        }
        
         public ChatViewModel()
         {
             selectedString = "";
             socket = SocketAPI.GetInstance().GetSocket();
             SendCommand = new DelegateCommand(SendMessege);
+            ChangeWindowCommand = new DelegateCommand(ChangeWindow);
             ItemSelectedCommand = new DelegateCommand<ChatModel>(HandleSelectedItem);
 
             listChatModel = new ListChatModel();
