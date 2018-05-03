@@ -11,7 +11,7 @@
         <local:ChatViewModel x:Key="chatViewModel"/>
     </Window.Resources>
     <Grid>
-        <ListView x:Name="lvMessage" ItemsSource="{Binding ListChat, Source={StaticResource chatViewModel}}" SelectedItem="{Binding SelectedItem, Source={StaticResource chatViewModel}}" HorizontalAlignment="Left" Height="192" Margin="10,36,0,0" VerticalAlignment="Top" Width="352">
+        <ListView x:Name="lvMessage" ItemsSource="{Binding ListChat, Source={StaticResource chatViewModel}}" HorizontalAlignment="Left" Height="192" Margin="10,36,0,0" VerticalAlignment="Top" Width="352">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Name}"/>
